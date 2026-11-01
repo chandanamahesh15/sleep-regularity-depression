@@ -1,0 +1,54 @@
+# Sleep regularity -> depression risk: default experiment configuration.
+# Every value here can be overridden from the CLI:
+#   sleeprisk run --set labels.threshold=5 --set cv.n_repeats=10
+
+seed: 42
+
+data:
+  base_dir: data/raw/dataset          # root of the extracted StudentLife archive
+  timezone: America/New_York          # Dartmouth local time (raw timestamps are UTC epoch seconds)
+  output_dir: results/runs
+
+labels:
+  survey_wave: post                   # "pre" | "post" — post aligns with the sensing period
+  threshold: 10                       # PHQ-9 >= 10 = moderate+ (standard screening cut-off); 5 = mild+
+  max_missing_items: 1                # >1 unanswered item -> drop the user; <=1 -> prorate
+
+sleep:
+  min_hours: 3.0
+  max_hours: 14.0
+  epoch_minutes: 15                   # resolution for the Phillips Sleep Regularity Index
+
+windows:
+  length_days: 7
+  stride_days: 1
+  min_valid_days: 4                   # a window needs >= 4 days with a detected sleep episode
+
+cv:
+  n_splits: 5
+  n_repeats: 5
+  n_permutations: 50                  # label-permutation null for the primary model (0 disables)
+  bootstrap: 1000
+
+models:
+  run: [majority, logistic_user, random_forest, lstm]
+  random_forest:
+    n_estimators: 300
+    max_depth: 6
+    min_samples_leaf: 5
+  logistic_user:
+    C: 0.5
+  lstm:
+    hidden_dim: 32
+    num_layers: 1
+    dropout: 0.3
+    lr: 1.0e-3
+    weight_decay: 1.0e-4
+    batch_size: 64
+    max_epochs: 60
+    patience: 8
+    val_fraction: 0.2                 # inner validation split, grouped by user
+
+leaky_replica:
+  enabled: true                       # re-run the original (leaky) protocol for comparison
+  test_size: 0.2

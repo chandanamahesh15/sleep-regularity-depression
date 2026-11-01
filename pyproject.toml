@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sleeprisk"
+version = "2.0.0"
+description = "Sleep regularity -> depression risk on StudentLife: a subject-level leakage case study"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Dheeraj Reddy" }]
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.1",
+  "scikit-learn>=1.4",
+  "matplotlib>=3.8",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+lstm = ["torch>=2.2"]
+data = ["kagglehub>=0.3"]
+dev = ["pytest>=8", "ruff>=0.5", "nbformat", "nbconvert", "ipykernel"]
+
+[project.urls]
+Repository = "https://github.com/chandanamahesh15/sleep-regularity-depression"
+
+[project.scripts]
+sleeprisk = "sleeprisk.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501", "B905", "B023"]

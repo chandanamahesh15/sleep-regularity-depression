@@ -1,0 +1,4 @@
+test,observed_auroc,p_value
+logistic @ PHQ>=10,0.493,0.471
+random_forest @ PHQ>=10,0.68,0.097
+logistic @ PHQ>=5,0.638,0.226
