@@ -1,6 +1,6 @@
 # Sleep Regularity and Depression Risk: A Leakage Case Study
 
-*Dheeraj Reddy · October 2026*
+*Chandana Mahesh · October 2026*
 
 ## Abstract
 
