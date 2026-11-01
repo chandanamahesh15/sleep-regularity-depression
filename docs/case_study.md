@@ -217,5 +217,3 @@ Most of these defects would have been caught by a handful of checks that now run
 - Ojala, M., & Garriga, G. C. (2010). Permutation tests for studying classifier performance. *Journal of Machine Learning Research*, 11.
 - Xu, X. et al. (2022). GLOBEM dataset: multi-year datasets for longitudinal human behavior modeling generalization. *NeurIPS Datasets and Benchmarks*. [arXiv](https://arxiv.org/pdf/2211.02733) · [PhysioNet](https://www.physionet.org/content/globem/)
 - NetHealth Project, University of Notre Dame. [Project site](https://sites.nd.edu/nethealth/)
-
-References without links are cited from memory; check volume and page details before submission.
