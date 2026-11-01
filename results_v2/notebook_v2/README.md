@@ -1,7 +1,5 @@
 # Results of the v2 notebook
 
-Unzip `results_v2.zip` (downloaded by Cell 18 of the v2 notebook) into this folder:
-
 | File | Contents |
 |---|---|
 | `subject_cv_summary.csv` | AUROC, balanced accuracy, sensitivity, specificity per model (subject-level CV) |
